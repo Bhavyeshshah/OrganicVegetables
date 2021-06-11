@@ -1,0 +1,264 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<link rel="stylesheet" href={%static "css/main.css"%}>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Roboto&display=swap" rel="stylesheet">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-text fixed-top navbar-bg-color">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Vegetable Basket</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto mr-5">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="\">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            All Products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/demo">Store</a></li>
+<!--                            <li><a class="dropdown-item" href="#">Fruits</a></li>-->
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Logout
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/account/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Login/Sign Up
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/account/login">Login</a>
+                            </li>
+
+                            <li><a class="dropdown-item" href="/account/register">Sign Up</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                       <li class="nav-item">
+                       <a class="nav-link" href="#" id = "popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                           My Cart (<span id="cart">0</span>) </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="#"><i class="fas fa-cart-plus icon-cart"></i></a>
+                   </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="products">
+        <div class="container">
+            <h1 class="lg-title">Organic Vegetable and Fruits</h1>
+            <p class="text-light"></p>
+            <div class="product-items">
+                {% for shop in shop_now %}
+                <!-- single product -->
+                <div class="product">
+                    <div class="product-content">
+                        <div class="product-img">
+                            <img src="{{shop.image.url}}" alt="product image">
+                        </div>
+                         <div class="product-btns">
+                         <span id="divpr{{shop.id}}" class="divpr">
+
+                            <button type="button" id="pr{{shop.id}}" class="btn-cart cart" > ADD TO CART
+
+                               <!--<span><i class = "fas fa-plus"></i></span>-->
+                                </button>
+                               </span>
+                            <a href="\viewDetail/{{shop.id}}">
+                            <button id="qv{{shop.id}}" type="button" class="btn-buy">BUY NOW
+                                    <span><i class = "fas fa-shopping-cart"></i></span>
+                                </button>
+                            </a>
+                    </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-info-top">
+                            <h2 class="sm-title">Fresh Veges</h2>
+                            <div class="rating">
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "fas fa-star"></i></span>
+                                <span><i class = "far fa-star"></i></span>
+                            </div>
+                        </div>
+                        <a href="#" class="product-name"><span id="namepr{{shop.id}}">{{shop.product_name}}</span></a>
+                        <p class="product-price">RS. {{shop.discount_price}}</p>
+                        <p class="product-price">RS. <span id="pricepr{{shop.id}}">{{shop.price}}</span></p>
+                    </div>
+
+                    <div class="off-info">
+                        <h2 class="sm-title">{{shop.discount_percentage}}</h2>
+                    </div>
+                </div>
+                <!-- end of single product -->
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+ <!-- Footer -->
+
+    <footer id="footer" class="container-fluid">
+        <i class="footer-icons fab fa-linkedin"></i>
+        <i class="footer-icons fab fa-facebook-f"></i>
+        <i class="footer-icons fab fa-instagram"></i>
+        <i class="footer-icons fas fa-envelope"></i>
+        <p>© Copyright 2020 Group 1</p>
+        <p class="float-end"><a href="#" class="back-to-top">Back to top</a></p>
+    </footer>
+<!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"  integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"       crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"  integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"  crossorigin="anonymous"></script>
+ <!--Used for Icons-->
+    <script src="https://kit.fontawesome.com/1d8e01a44a.js" crossorigin="anonymous"></script>
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+    {% block js %}
+<script>
+console.log('working')
+// Find out the cart item from localstorage //
+if(localStorage.getItem('cart') == null)
+{
+var cart={};
+}
+else{
+cart= JSON.parse(localStorage.getItem('cart'));
+updateCart(cart);
+}
+//jQuery starts here//
+//If the add to cart button is clicked, add/increment the item //
+
+$('.divpr').on('click','button.cart',function(){
+console.log('clicked');
+var idStr= this.id.toString();
+console.log(idStr);
+if(cart[idStr]!= undefined) {
+qty = cart[idStr][0] + 1;
+}
+else{
+qty = 1;
+        name = document.getElementById('name'+idStr).innerHTML
+        price = document.getElementById('price'+idStr).innerHTML
+        cart[idStr] = [qty, name, price];
+}
+console.log(cart);
+updateCart(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML= Object.keys(cart).length;
+});
+
+$('#popcart').popover();
+updatePopover(cart);
+function updatePopover(cart)
+{
+
+    var popStr = "";
+    popStr = popStr + "<h5> Cart for your items in my shopping cart </h5><div class='mx-2 my-2'>";
+    var i = 1;
+    for (var item in cart){
+        popStr = popStr + "<b>" + i + "</b>. ";
+        popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "Qty: " + cart[item][0]+ '<br>';
+        i = i+1;
+    }
+    popStr = popStr + "</div> <a href='/checkout'><button class='btn btn-primary' id='checkout'> checkout</button></a> <button class='btn btn-primary' id='clearCart' onclick='clearCart()'>clear Cart</button> "
+    document.getElementById('popcart').setAttribute('data-content', popStr);
+    $('#popcart').popover('show');
+}
+function clearCart() {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    for (var item in cart) {
+        document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn-cart cart">Add To Cart</button>'
+    }
+    localStorage.clear();
+    cart = {};
+    updateCart(cart);
+}
+
+
+
+function updateCart(cart) {
+    var sum=0;
+    for (var item in cart) {
+    sum=sum+ cart[item][0]
+        document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = sum;
+    console.log(cart);
+    updatePopover(cart);
+}
+
+// If plus or minus button is clicked, change the cart as well as the display value
+$('.divpr').on("click", "button.minus", function() {
+    a = this.id.slice(7, );
+    cart['pr' + a][0] = cart['pr' + a][0] - 1;
+    cart['pr' + a][0] = Math.max(0, cart['pr' + a][0]);
+    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+    updateCart(cart);
+});
+$('.divpr').on("click", "button.plus", function() {
+    a = this.id.slice(6, );
+    cart['pr' + a][0] = cart['pr' + a][0] + 1;
+    document.getElementById('valpr' + a).innerHTML = cart['pr' + a][0];
+    updateCart(cart);
+});
+
+
+
+</script>
+{% endblock %}
+
+</body>
+
+</html>

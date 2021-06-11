@@ -1,0 +1,297 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>Store</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Roboto&display=swap" rel="stylesheet">
+
+    <!--Used for Icons-->
+    <script src="https://kit.fontawesome.com/1d8e01a44a.js" crossorigin="anonymous"></script>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href={%static "css/home.css"%}>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-text fixed-top navbar-bg-color">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Vegetable Basket</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto mr-5">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="\">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            All Products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/demo">Store</a></li>
+<!--                            <li><a class="dropdown-item" href="#">Fruits</a></li>-->
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/AboutUs">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ContactUs">Contact</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Logout
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/account/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Login/Sign Up
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/account/login">Login</a>
+                            </li>
+
+                            <li><a class="dropdown-item" href="/account/register">Sign Up</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-cart-plus icon-cart"></i></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel -->
+
+    <div id="carouselExampleFade" class="carousel slide carousel-fade carousel-container" data-bs-ride="carousel"
+        data-bs-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-container carousel-item active">
+                <img src="static/images/carouselImage1.jpg" class="d-block w-100 carousel-img" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="carousel-text1">Organic & Natural</h1>
+                </div>
+            </div>
+            <div class="carousel-container carousel-item">
+                <img src="static/images/carouselImage2.png" class="d-block w-100 carousel-img" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="carousel-text2">ONE STOP SHOP To Keep YOUR HEALTH ON TOP</h1>
+                    <button type="button" class="btn btn-outline-success btn-lg carousel-button ">Discover</button>
+                </div>
+            </div>
+            <div class="carousel-container carousel-item">
+                <img src="static/images/carouselImage3.png" class="d-block w-100 carousel-img" alt="">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="carousel-text3">Organic & Natural</h1>
+                    <h4 class="carousel-text3-subHeading">As the nationally certified organic grocer in the country, we
+                        are offering you the best choice of vegies we possible can.</h4>
+                    <div class="carousel-page3-buttons">
+                        <button type="button" class="btn btn-lg carousel-button1">Shop Now</button>
+                        <button type="button" class="btn btn-lg carousel-page3-button2 carousel-button1">Discover</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Products -->
+
+
+    <div class="products-heading">
+        <h1 class="daily-deals">Deals of the Day</h1>
+        <img src="static/images/leaf1.png" alt="" class="leaf1">
+    </div>
+    <div id="deal1" class="container-fluid">
+        <div class="row">
+            {% for shop in shop_now %}
+            {% if shop.discount_price %}
+            <div class="col-md-3 col-sm-6 ">
+                <div class="card" style="width: 18rem;">
+                    <img class="product-img card-img-top" src="{{shop.image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{shop.product_name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                        <h4>{{shop.price}} <span class="text-muted h6"><del>{{shop.discount_price}}</del></span></h4>
+                        <a href="\viewDetail/{{shop.id}}" class="btn d-grid gap-2" id="qv{{shop.id}}">
+                            View Detail
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+{% endif %}
+{% endfor %}
+        </div>
+    </div>
+
+
+    <!-- Testimonials -->
+
+    <div class="testimonial-heading">
+        <h1 class="customer-review">Customers Reviews</h1>
+        <img src="static/images/leaf1.png" alt="">
+    </div>
+    <div id="testimonialsExampleControls" class="carousel slide testimonials text-center" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 d-flex align-self-stretch">
+                            <div class="card h-100" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">⭐⭐⭐⭐⭐</h5>
+                                    <p class="card-text">Fresh Fruits and Vegetables are available.</p>
+                                    <h6> <span><img src="static/images/testimonial1.jpg" alt="" class="testimonial-img"></span>
+                                        Ashna Kabsuri </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex align-self-stretch">
+                            <div class="card h-100" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">⭐⭐⭐⭐</h5>
+                                    <p class="card-text">Delivery of Fruits and Vegetables was fast.
+                                    </p>
+                                    <h6> <span><img src="static/images/testimonial2.jpg" alt="" class="testimonial-img"></span>
+                                        Neel Patel </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex align-self-stretch">
+                            <div class="card h-100" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">⭐⭐⭐⭐⭐</h5>
+                                    <p class="card-text">Good Quality of Fruits and Vegetables available.</p>
+                                    <h6> <span><img src="static/images/testimonial3.jpg" alt="" class="testimonial-img"></span>
+                                        Akshat Shah </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 d-flex align-self-stretch">
+                            <div class="card h-100" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">⭐⭐⭐⭐</h5>
+                                    <p class="card-text">Rates of Fruits and Vegetables are very resonable.</p>
+                                    <h6> <span><img src="static/images/testimonial4.jpg" alt="" class="testimonial-img"></span>
+                                        Nidhi Hariya </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <div class="card h-100" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">⭐⭐⭐⭐⭐</h5>
+                                    <p class="card-text">High Quality Vegieas are available at Fast Delivery.</p>
+                                    <h6> <span><img src="static/images/testimonial5.jpg" alt="" class="testimonial-img"></span>
+                                        Pranav Dalvi </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex align-self-stretch ">
+                            <div class="card h-100" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">⭐⭐⭐⭐</h5>
+                                    <p class="card-text">Good Quality Vegies at resonable rates.</p>
+                                    <h6> <span><img src="static/images/testimonial6.jpg" alt="" class="testimonial-img"></span>
+                                        Akshat Limbachiya </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialsExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer id="footer" class="container-fluid">
+        <i class="footer-icons fab fa-linkedin"></i>
+        <i class="footer-icons fab fa-facebook-f"></i>
+        <i class="footer-icons fab fa-instagram"></i>
+        <i class="footer-icons fas fa-envelope"></i>
+        <p>© Copyright 2020 Group 1</p>
+        <p class="float-end"><a href="#" class="back-to-top">Back to top</a></p>
+    </footer>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

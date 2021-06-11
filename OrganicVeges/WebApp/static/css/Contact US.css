@@ -1,0 +1,223 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* background:green; */
+}
+
+body {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    overflow: hidden;
+    /* background:green; */
+
+
+}
+
+.tools-wrapper {
+
+    width: 270px;
+    border : 3px solid cyan;
+    padding : 4%;
+    background-image: linear-gradient(to bottom right, #7c8288, #1a2027);
+    padding:5px;
+}
+.head {
+    color:green;
+    position:center;
+
+}
+#start {
+
+    position: center;
+    top: 20px;
+    left: 20px;
+    width: 160px;
+    padding: 10px;
+    border:solid black;
+
+
+}
+#start:hover {
+    font-weight: 900;
+    letter-spacing: 1px;
+    stroke-width: 5;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: red;
+}
+#enter_a_number {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    line-height: 1.9em;
+    font-size:13px;
+    padding:10px;
+}
+
+#interactive{
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    line-height: 1.9em;
+    font-size: 13px;
+}
+
+#defaultmode{
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    line-height: 1.9em;
+    font-size: 13px;
+}
+
+.displayDistance {
+   line-height: 1.6em;
+    width: 110px;
+    position: absolute;
+    top: 70px;
+    left: 125px;
+     border:solid black;
+}
+
+.points {
+    position: absolute;
+    top: 110px;
+    left: 10px;
+}
+
+#interactiveText {
+    font-size: 15px;
+    position: absolute;
+    left: 2px;
+    top: 120px;
+}
+
+#interactive {
+    position: absolute;
+    top: 127.4px;
+    left: 150px;
+     border:solid black;
+}
+
+#defaultText {
+    font-size: 15px;
+    position: absolute;
+    top: 160px;
+}
+
+#defaultSize {
+    position: absolute;
+    top: 159.7px;
+    width: 100px;
+    left: 140px;
+    line-height: 2px;
+    border:solid black;
+}
+.Algo {
+    position: absolute;
+    top: 200px;
+    left: 10px;
+}
+.speed {
+    position: absolute;
+    top: 310px;
+    left: 10px;
+    color:green;
+}
+
+.adjacencylist{
+    position: absolute;
+    top: 400px;
+    left: 30px;
+}
+#inputEdge{
+    position: absolute;
+    top: 60px;
+    left: 100px;
+    line-height: 1em;
+    font-size:10px;
+    padding:10px;
+}
+canvas {
+    display: block;
+}
+
+#bruteforce {
+    position: center;
+    top: 70px;
+    left: 10px;
+    width: 160px;
+    padding: 0px;
+    border: solid black;
+}
+
+#bruteforce:hover{
+    font-weight: 900;
+    letter-spacing: 1px;
+    stroke-width: 5;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: red;
+}
+#plotGraph {
+    position: center;
+    top: 70px;
+    left: 10px;
+    width: 160px;
+    padding: 0px;
+    border: solid black;
+}
+#plotGraph:hover{
+    font-weight: 900;
+    letter-spacing: 1px;
+    stroke-width: 5;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: red;
+}
+.head{
+    color:green;
+    left:20px;
+
+}
+#increase{
+    position: center;
+    top: 70px;
+    left: 10px;
+    width: 60px;
+    padding: 0px;
+    border: solid black;
+}
+#decrease{
+    position: center;
+    top: 70px;
+    left: 10px;
+    width: 60px;
+    padding: 0px;
+    border: solid black;
+
+}
+#increase:hover,#increase:focus{
+    font-weight: 900;
+    letter-spacing: 1px;
+    stroke-width: 5;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: red;
+}
+#decrease:hover{
+    font-weight: 900;
+    letter-spacing: 1px;
+    stroke-width: 5;
+    stroke-dasharray: 15, 310;
+    stroke-dashoffset: 48;
+    transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color: red;
+}
+#createEdge{
+    font-size:14px;
+}

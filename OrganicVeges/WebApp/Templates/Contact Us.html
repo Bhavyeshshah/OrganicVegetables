@@ -1,0 +1,98 @@
+<!--{% load static %}-->
+<!--{% static "images" as baseUrl %}-->
+<!--<link rel="stylesheet" href={%static "css/Contact US.css"%}>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>TSPVisualizer</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+   <link type="text/css" media="print" rel="stylesheet" href="https://cdn.jotfor.ms/css/printForm.css?3.3.24602" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f30e2a790832f3e96009402"/>
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_styles.css?3.3.24602" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_feature.css?3.3.24602" />
+<style type="text/css" id="form-designer-style">
+
+.form-label.form-label-auto {
+
+        display: inline-block;
+        float: left;
+        text-align: left;
+
+      }
+
+</style>
+ <form action="" method="post">
+                         {% csrf_token %}
+  <div role="main" class="form-all">
+    <ul class="form-section page-section">
+      <li id="cid_1" class="form-input-wide" data-type="control_head">
+        <div class="form-header-group  header-large">
+          <div class="header-text httal htvam">
+            <h1 id="header_1" class="form-header" data-component="header">
+              Contact Us
+            </h1>
+          </div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_fullname" id="id_3">
+        <label class="form-label form-label-left form-label-auto" id="label_3" for="first_3"> Name </label>
+        <div id="cid_3" class="form-input" data-layout="full">
+          <div data-wrapper-react="true">
+            <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+              <input type="text" id="first_3" name="firstName" class="form-textbox" size="10" value="" data-component="first" aria-labelledby="label_3 sublabel_3_first" />
+              <label class="form-sub-label" for="first_3" id="sublabel_3_first" style="min-height:13px" aria-hidden="false"> First Name </label>
+            </span>
+            <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
+              <input type="text" id="last_3" name="lastName" class="form-textbox" size="15" value="" data-component="last" aria-labelledby="label_3 sublabel_3_last" />
+              <label class="form-sub-label" for="last_3" id="sublabel_3_last" style="min-height:13px" aria-hidden="false"> Last Name </label>
+            </span>
+          </div>
+        </div>
+      </li>
+      <li class="form-line jf-required" data-type="control_email" id="id_4">
+        <label class="form-label form-label-left form-label-auto" id="label_4" for="input_4">
+          E-mail
+          <span class="form-required">
+            *
+          </span>
+        </label>
+        <div id="cid_4" class="form-input jf-required" data-layout="half">
+          <input type="email" id="input_4" name="email" class="form-textbox validate[required, Email]" style="width:310px" size="310" value="" data-component="email" aria-labelledby="label_4" required="" />
+        </div>
+      </li>
+      <li class="form-line" data-type="control_textarea" id="id_5">
+        <label class="form-label form-label-left form-label-auto" id="label_5" for="input_5"> Message </label>
+        <div id="cid_5" class="form-input" data-layout="full">
+          <textarea id="input_5" class="form-textarea" name="feedback" style="width:648px;height:163px" data-component="textarea" aria-labelledby="label_5"></textarea>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_button" id="id_2">
+        <div id="cid_2" class="form-input-wide" data-layout="full"><p>For more info Call Us On Anyitme Anywhere Ohh Yeahhh....</p><br><p>+918779853265 :- Ashna Kabsuri </p>
+          <div data-align="center" class="form-buttons-wrapper form-buttons-center   jsTest-button-wrapperField">
+            <button id="input_2" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" data-component="button" data-content="">
+              Submit
+            </button>
+
+          </div>
+        </div>
+      </li>
+      <li style="display:none">
+        Should be Empty:
+        <input type="text" name="website" value="" />
+      </li>
+    </ul>
+  </div>
+
+</form>
+</body>
+</html>
+
+

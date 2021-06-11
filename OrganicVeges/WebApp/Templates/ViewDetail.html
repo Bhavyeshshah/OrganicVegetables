@@ -1,0 +1,314 @@
+{% load static %}
+{% static "images" as baseUrl %}
+{% load humanize %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+
+    <title>Store</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Roboto&display=swap" rel="stylesheet">
+
+    <!--Used for Icons-->
+    <script src="https://kit.fontawesome.com/1d8e01a44a.js" crossorigin="anonymous"></script>
+
+    <!-- CSS files -->
+    <link rel="stylesheet" href={%static "css/viewdetail.css"%}>
+
+    <style type='text/css'>
+  iframe.goog-te-banner-frame{ display: none !important;}
+  </style>
+
+  <style type='text/css'>
+  body {position: static !important; top:0px !important;}
+  </style>
+
+  <style type='text/css'>
+  .goog-logo-link {display:none !important;}
+  .goog-te-gadget{color: transparent !important;}
+  </style>
+</head>
+<body>
+     <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-text fixed-top navbar-bg-color">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Vegetable Basket</a>
+            <a class="nav-link" href="#"><i class="fas fa-cart-plus icon-cart"></i></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto mr-5">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="\">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            All Products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/demo">Store</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+                    <script type="text/javascript">
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+            }
+            </script>
+
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Logout
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/account/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Login/Sign Up
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/account/login">Login</a>
+                            </li>
+
+                            <li><a class="dropdown-item" href="/account/register">Sign Up</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Cart</a>
+                    </li>
+                    <li class="nav-item">
+                         <a class="nav-link" href="#" id = "popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                           My Cart (<span id="cart">0</span>) </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+<br>
+ <br>
+ <br>
+ <br>
+
+     {% for shops in shops %}
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <img src="{{shops.image.url}}" width="233px" height="385px">
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <br>
+            <br>
+            <h4>{{shops.product_name}}</h4>
+
+            <p>{{shops.description}}</p>
+            <button type="button" class="btn btn-lg">Add</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    {% if user.is_authenticated %}
+    <a  data-bs-toggle="collapse" href="#collapseExample"  aria-controls="collapseExample">
+    <h4> Comments</h4>
+    </a>
+
+    <form action="\postComment" method="post">
+      {% csrf_token %}
+        <input type="hidden" name="pr_id" value="{{shops.id}}">
+        <input type="hidden" name="reply_id" value="0">
+
+        <input type="text" name="comment" placeholder="Enter comment here" required>
+        <input type="submit" class="btn btn-primary cart" value="Add Comment" ></input>
+    </form>
+
+    {% else %}
+    Please Login To Comment....
+    <br>
+    <br>
+    {% endif %}
+    {% endfor %}
+
+    {% for shops in shops %}
+    {% for comment in commentsss %}
+
+    {% if shops.id == comment.pr_id and comment.reply_id == 0 %}
+     <div class="collapse" id="collapseExample">
+    <div class="row my-3">
+        <div class="col-md-1  ">
+          <img class="rounded mx-auto d-block w-100 my-2 border border-dark p-2" src="/static/images/user-icon.png" alt="user">
+        </div>
+        <div class="col-md-11 ">
+            <b> {{comment.user.username}} </b> <span class="badge bg-secondary " style="padding: 3px">{{comment.timestamp | naturaltime}}</span>
+            <div>{{comment.comment}} </div>
+
+
+            <div class="mx-0 reply">
+                <button class="btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#reply{{comment.com_id}}" aria-expanded="false" aria-controls="collapseExample">
+                    reply
+                </button>
+
+                <div class="collapse" id="reply{{comment.com_id}}">
+                    <div class="card card-body my-2">
+                        <form action="\replyComment" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="comment" placeholder="Enter reply here" required>
+                            <input type="hidden" name="pr_id" value="{{shops.id}}">
+                            <input type="hidden" name="reply_id" value="{{comment.com_id}}">
+                    </div>
+                            <button class="btn btn-primary cart" >Add Reply</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="replies my-2 ">
+                     {% for replys in replys %}
+                    {% if comment.com_id == replys.reply_id %}
+                    <div class="row my-2">
+                        <div class="col-md-1 ">
+                            <img class="rounded mx-auto d-block w-75 my-2 border border-dark p-2" src="/static/images/user-icon.png" alt="user">
+                        </div>
+                        <div class="col-md-11">
+                            <div class="col-md-11 ">
+
+                                <b> {{replys.user.username}} </b> <span class="badge badge-secondary ">{{replys.timestamp| naturaltime}}</span>
+                                <div>{{replys.comment}}</div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+
+                                {% endif %}
+                      {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{% endfor %}
+    </div>
+</div>
+
+
+
+
+<div class="container-fluid">
+    <div class="products-heading">
+        <h2 class="daily-deals">Related Products</h2>
+        <img src="\static/images/leaf1.png" alt="" class="leaf1">
+    </div>
+    <div id="deal1" class="container-fluid">
+        <div class="row">
+            {% for shop in shop_now %}
+            {% if shops.section == shop.section %}
+            <div class="col-md-3 col-sm-6 ">
+                <div class="card" style="width: 18rem;">
+                    <img class="product-img card-img-top" src="{{shop.image.url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{shop.product_name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"></h6>
+                        <h4>{{shop.price}} <span class="text-muted h6"><del>{{shop.discount_price}}</del></span></h4>
+                        <a href="\viewDetail/{{shop.id}}" class="btn d-grid gap-2" id="qv{{shop.id}}">
+                            View Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+     {% endfor %}
+
+
+
+
+ <!-- Footer -->
+
+    <footer id="footer" class="container-fluid">
+        <i class="footer-icons fab fa-linkedin"></i>
+        <i class="footer-icons fab fa-facebook-f"></i>
+        <i class="footer-icons fab fa-instagram"></i>
+        <i class="footer-icons fas fa-envelope"></i>
+        <p>© Copyright 2020 TinDog</p>
+        <p class="float-end"><a href="#" class="back-to-top">Back to top</a></p>
+    </footer>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
+ {% block js %}
+
+<script>
+if(localStorage.getItem('cart') == null)
+{
+var cart={};
+}
+else{
+cart= JSON.parse(localStorage.getItem('cart'));
+}
+
+
+</script>
+{% endblock %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

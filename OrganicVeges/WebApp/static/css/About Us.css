@@ -1,0 +1,101 @@
+body {
+  font-family: 'Merienda', cursive;
+  margin: 0;
+}
+
+.content {
+  background-color: #f0f0f0;
+  height: 150px;
+  width: 100%;
+  line-height: 45px;
+}
+
+.title{
+  text-align:left;
+
+}
+
+/* Intro and Features */
+.feature-row {
+  width: 50%;
+  margin: 100px auto;
+  text-align: left;
+  line-height: 2;
+}
+
+.harvest {
+  float: left;
+  margin-right: 30px;
+  border-radius: 100%;
+}
+
+.broccolli {
+  float: right;
+  margin-left: 30px;
+  border-radius: 100%;
+}
+
+.spinach {
+  float: left;
+  margin-right: 30px;
+  border-radius: 100%;
+}
+
+/* Team Part content */
+.wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1160px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.person-one {
+  float: left;
+  margin: 50px auto auto 50px;
+}
+
+.person-two {
+  float: left;
+  margin: 50px auto auto 50px;
+}
+
+.person-three {
+  float: left;
+  margin: 50px auto auto 50px;
+}
+
+.person-four {
+  float: left;
+  margin: 50px auto auto 50px;
+}
+
+.first-person {
+  border-radius: 100%;
+  width: 100%;
+}
+
+.second-person {
+  border-radius: 100%;
+  width: 100%;
+}
+
+.third-person {
+  border-radius: 100%;
+  width: 100%;
+}
+
+.fourth-person {
+  border-radius: 100%;
+  width: 100%;
+}
+
+.tech-stack {
+  font-size: 20px;
+}
+
+.social-media {
+  border-radius: 100%;
+  margin: 0 0 0 5px;
+  width: 20%;
+}

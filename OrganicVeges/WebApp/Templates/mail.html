@@ -1,0 +1,93 @@
+{% load static %}
+{% static "images" as baseUrl %}
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<h2>Hi{{orders.username}} , Thankyou for ordering in OrganicVeges </h2><br>
+Your Order is <br>
+{{orders.items_json}} Amount {{orders.amount}}
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <img class="my-2" src="" alt="Vegetable Website Logo">
+            <h1 class="text-danger font-weight-normal">Checkout Form</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                    <span class="badge badge-secondary badge-pill">1</span>
+                </h4>
+                <ul class="list-group mb-3" id="items">
+
+                </ul>
+                 <li class="list-group-item d-flex justify-content-between">
+                        <span >Total Amount</span>
+                        <strong>Rs.<span id="totalPrice"></span></strong>
+                    </li>`
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+{% block js %}
+<script>
+if(localStorage.getItem('cart') == null)
+{
+var cart={};
+}
+
+else{
+cart= JSON.parse(localStorage.getItem('cart'));
+
+}
+console.log(cart);
+var sum = 0;
+var totalPrice = 0;
+if ($.isEmptyObject(cart)) {
+    // If object is empty
+    mystr = "<p>Your cart is empty, please add some items before checking out ! </p>"
+    $('#items').append(mystr);
+}
+else
+{
+for(item in cart){
+    let name = cart[item][1];
+    let qty = cart[item][0];
+    let itemPrice = cart[item][2];
+    console.log(itemPrice);
+    let ProductPrice= qty * itemPrice;
+    sum = sum + qty;
+    totalPrice = totalPrice + qty* itemPrice;
+    let totalAmount = totalPrice
+    mystr = `        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h5 class="my-0">${name}</h5>
+                            <small class="text-muted">${qty}</small>
+                        </div>
+                        <span class="text-muted">Rs. ${ProductPrice}</span>
+                    </li>`
+    $('#items').append(mystr);
+}
+}
+document.getElementById('totalPrice').innerHTML = totalPrice;
+$('#itemsJson').val(JSON.stringify(cart));
+{% endblock %}
+</script>
+</body>
+</html>
